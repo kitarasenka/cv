@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kiryl Tarasenka — Senior React Native Engineer</title>
-  <meta name="description" content="Kiryl Tarasenka — Senior React Native Engineer with 9+ years of experience: iOS, Android, Web and Telegram. Team lead, brownfield migrations, own products.">
+  <meta name="description" content="Kiryl Tarasenka — Senior React Native Engineer, 9+ years, 15 commercial apps, team lead on 4 of them. Pulsebit (1M+ installs), Mustread, CleverMe; brownfield migrations for e-commerce and retail.">
   <meta name="theme-color" content="#0b0d12">
   <meta property="og:title" content="Kiryl Tarasenka — Senior React Native Engineer">
-  <meta property="og:description" content="9+ years building cross-platform apps. Team lead, brownfield migrations, own products: BatBus, Twig, Ghost Garden and Telegram bots.">
+  <meta property="og:description" content="9+ years building iOS and Android apps in React Native. Team lead on Pulsebit (1M+ installs), Mustread and CleverMe. Own products: BatBus (17K+ users), Twig, Ghost Garden.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://kitarasenka.github.io/cv/">
   <meta property="og:image" content="https://kitarasenka.github.io/cv/assets/photo.jpg">
@@ -29,7 +29,9 @@
   <header class="topbar">
     <a class="topbar__brand" href="#top">KT<span>.</span></a>
     <nav class="topbar__nav">
+      <a href="#apps" data-i18n="nav.apps"></a>
       <a href="#skills" data-i18n="nav.skills"></a>
+      <a href="#experience" data-i18n="nav.experience"></a>
       <a href="#projects" data-i18n="nav.projects"></a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
@@ -42,24 +44,15 @@
 
   <main id="top">
     <section class="hero">
-      <div class="hero__photo" id="photo">
-        <div class="photo__ring"></div>
-        <div class="photo__frame">
-          <img src="assets/photo.jpg" alt="Kiryl Tarasenka" onerror="this.remove()">
-          <span class="photo__initials">KT</span>
-        </div>
-        <div class="photo__orbit" aria-hidden="true">
-          <span>📱</span><span>⚛️</span><span>🚌</span><span>🤖</span><span>🌳</span>
-        </div>
-      </div>
-
       <div class="hero__text">
-        <p class="hero__hello reveal"><span class="wave" aria-hidden="true">👋</span> <span data-i18n="hero.hello"></span></p>
+        <div class="hero__id reveal">
+          <span class="hero__avatar">
+            <span>KT</span>
+            <img src="assets/photo.jpg" alt="Kiryl Tarasenka" onerror="this.remove()">
+          </span>
+          <p class="hero__hello" data-i18n="hero.hello"></p>
+        </div>
         <h1 class="hero__role reveal" data-i18n="hero.role"></h1>
-        <p class="hero__build reveal">
-          <span data-i18n="hero.build"></span>
-          <span class="rotator" id="rotator"></span>
-        </p>
         <p class="hero__about reveal" data-i18n="hero.about"></p>
         <div class="hero__actions reveal">
           <a class="btn btn--primary magnetic" id="cv-link" href="#" download>
@@ -71,24 +64,43 @@
             <span data-i18n="hero.write"></span>
           </a>
         </div>
-        <ul class="stats reveal" id="stats"></ul>
       </div>
+
+      <aside class="proof reveal">
+        <ul class="stats" id="stats"></ul>
+        <p class="proof__title" data-i18n="hero.shipped"></p>
+        <ul class="showcase" id="showcase"></ul>
+      </aside>
     </section>
 
-    <div class="stack" id="stack" aria-label="Tech stack"></div>
+    <section class="section" id="apps">
+      <p class="eyebrow reveal"><span>01</span> <span data-i18n="apps.eyebrow"></span></p>
+      <h2 class="section__title reveal" data-i18n="apps.title"></h2>
+      <p class="section__lead reveal" data-i18n="apps.lead"></p>
+      <div class="apps" id="apps-list"></div>
+      <p class="note reveal" data-i18n="apps.note"></p>
+    </section>
 
     <section class="section" id="skills">
-      <p class="eyebrow reveal"><span>01</span> <span data-i18n="skills.eyebrow"></span></p>
+      <p class="eyebrow reveal"><span>02</span> <span data-i18n="skills.eyebrow"></span></p>
       <h2 class="section__title reveal" data-i18n="skills.title"></h2>
-      <div class="strengths" id="strengths-list"></div>
+      <div class="skills" id="skills-list"></div>
+      <h3 class="subsection subsection--small reveal" data-i18n="skills.stack"></h3>
+      <ul class="stack reveal" id="stack"></ul>
+    </section>
+
+    <section class="section" id="experience">
+      <p class="eyebrow reveal"><span>03</span> <span data-i18n="exp.eyebrow"></span></p>
+      <h2 class="section__title reveal" data-i18n="exp.title"></h2>
+      <p class="section__lead reveal" data-i18n="exp.lead"></p>
+      <div class="exp" id="exp-list"></div>
     </section>
 
     <section class="section" id="projects">
-      <p class="eyebrow reveal"><span>02</span> <span data-i18n="projects.eyebrow"></span></p>
+      <p class="eyebrow reveal"><span>04</span> <span data-i18n="projects.eyebrow"></span></p>
       <h2 class="section__title reveal" data-i18n="projects.title"></h2>
       <p class="section__lead reveal" data-i18n="projects.lead"></p>
       <div class="pet-stats reveal" id="pet-stats"></div>
-      <p class="pet-stats__note reveal" data-i18n="pets.note"></p>
       <div class="products" id="products-list"></div>
 
       <h3 class="subsection reveal" data-i18n="bots.title"></h3>
@@ -101,7 +113,7 @@
 
     <section class="section contact" id="contact">
       <div class="contact__card reveal">
-        <p class="eyebrow"><span>03</span> <span data-i18n="contact.eyebrow"></span></p>
+        <p class="eyebrow"><span>05</span> <span data-i18n="contact.eyebrow"></span></p>
         <h2 class="contact__title" data-i18n="contact.title"></h2>
         <p class="contact__lead" data-i18n="contact.lead"></p>
         <div class="contact__actions" id="contact-actions"></div>

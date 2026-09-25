@@ -3,7 +3,7 @@ name: update-cv
 description: Refresh the portfolio site (this repo) from the user's projects in ~/projects — new features, links, screenshots, new or removed bots. Use when the user runs /update-cv or asks "обнови визитку", "обнови сайт-визитку", "update the cv site", or similar. Optional argument narrows the scope, e.g. `/update-cv twig`.
 ---
 
-Bring the site in line with the current state of the projects. All content is in `app.js`: `CV`, `CONTACTS`, `UI`, `STATS`, `STRENGTHS`, `STACK`, `PRODUCTS`, `BOTS` and `INFRA`. For project updates you normally touch only the last three, plus `STACK` if a project brings a new technology. Images go in `assets/img/`. Do not touch `index.html` or `styles.css` unless the layout itself has to change.
+Bring the site in line with the current state of the projects. All content is in `app.js`: `CV`, `CONTACTS`, `UI`, `STATS`, `PET_STATS`, `APPS`, `SKILLS`, `STACK`, `EXPERIENCE`, `PRODUCTS`, `BOTS` and `INFRA`. The page leads with commercial work: `APPS` (store apps where the user was team lead, with store links and ratings), `SKILLS` (each skill lists the project ids where it was used) and `EXPERIENCE` (every commercial project, grouped by company). Pet projects come after. For pet-project updates you normally touch only `PRODUCTS`, `BOTS` and `INFRA`, plus `STACK` if a project brings a new technology. Images go in `assets/img/`. Do not touch `index.html` or `styles.css` unless the layout itself has to change.
 
 If an argument was passed (a project name), limit steps 2–4 to that project.
 
@@ -44,7 +44,7 @@ Every folder in `nodes-managers/modules/` is a candidate for the BOTS block. A f
    - For a new bot, add an object with `emoji`, `name`, `handles` and `text: { ru, en }`. For a product, also add `image`, optionally `icon`, `tags` and `links`.
    - The "own projects" counter in the hero is computed from the length of PRODUCTS + BOTS + INFRA, so do not edit it by hand.
 
-4. **Numbers.** Run `python3 .claude/skills/update-cv/stats.py` and update `PET_STATS` (total lines rounded down to thousands with `K+`, total commits rounded down to tens with `+`) and the `stats` of each product and of Nodex. Nodex counts the whole `nodes-managers` monorepo, and the total is Nodex + Twig + Garden. BatBus users, MAU/WAU and 30-day sessions come only from the user (a screenshot of the Users screen in the BatBus admin). Do not read production to get them; ask the user instead. Languages are counted from `miniapp/src/i18n/*.json`. The avg launch time (1.1 s) was given by the user. Also update the month in `pets.note`.
+4. **Numbers.** Show only numbers that matter to a hiring manager: users, ratings, installs, languages, platforms. **Never show lines of code or commit counts**, because the user asked for them to be removed. BatBus users, MAU/WAU and 30-day sessions come only from the user (a screenshot of the Users screen in the BatBus admin). Do not read production to get them; ask the user instead. Update `PET_STATS` (BatBus users rounded down to thousands with `K+`) at the same time. Languages are counted from `miniapp/src/i18n/*.json`. The avg launch time (1.1 s) was given by the user. Store ratings and installs in `APPS` come from the public App Store (`https://itunes.apple.com/lookup?id=<id>`) and Google Play pages; update the month in `apps.note` when you refresh them.
 
 5. **Images.** Copy only files that are tracked in the source repo (`git -C <repo> ls-files <file>` is not empty). Untracked screenshots may contain private data. Shrink them:
    ```bash
