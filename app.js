@@ -168,10 +168,11 @@ const PRODUCTS = [
     icon: 'assets/img/batbus-icon.png',
     tags: ['Telegram Mini App', 'Maps', 'Subscriptions'],
     stats: [
-      { value: 28, label: { ru: 'маршрутов', en: 'routes' } },
-      { value: 578, label: { ru: 'остановок', en: 'stops' } },
+      // MAU/WAU — из админки BatBus (экран «Пользователи»), на 25.09.2026. null — не показывается.
+      { value: 7585, label: { ru: 'пользователей в месяц (MAU)', en: 'monthly users (MAU)' } },
+      { value: 2329, label: { ru: 'пользователей в неделю (WAU)', en: 'weekly users (WAU)' } },
       { value: 9, label: { ru: 'языков', en: 'languages' } },
-      { value: 516, label: { ru: 'коммитов', en: 'commits' } },
+      { value: 1.1, suffix: { ru: '\u00a0с', en: 's' }, label: { ru: 'средний запуск', en: 'avg launch time' } },
     ],
     links: [
       { label: 'batbus.app', href: 'https://batbus.app' },
@@ -345,11 +346,18 @@ const ownCount = () => PRODUCTS.length + BOTS.length + INFRA.length;
 const servicesCount = () => BOTS.length + 1;
 const statValue = (v) => (v === 'projects' ? ownCount() : v === 'services' ? servicesCount() : v);
 
+const decimalsOf = (n) => (String(n).split('.')[1] || '').length;
+const formatNum = (n, lang, d = decimalsOf(n)) =>
+  Number(n).toLocaleString(lang === 'ru' ? 'ru-RU' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+
 function metrics(list, lang, cls) {
-  if (!list || !list.length) return '';
-  return `<ul class="${cls}">${list.map((m) => {
+  const items = (list || []).filter((m) => m.value != null);
+  if (!items.length) return '';
+  return `<ul class="${cls}">${items.map((m) => {
     const label = m.key ? UI[lang][m.key] : m.label[lang];
-    return `<li><b><span data-count="${statValue(m.value)}">${statValue(m.value)}</span>${m.suffix || ''}</b><span>${esc(label)}</span></li>`;
+    const n = statValue(m.value);
+    const suffix = typeof m.suffix === 'object' ? m.suffix[lang] : (m.suffix || '');
+    return `<li><b><span data-count="${n}">${formatNum(n, lang)}</span>${esc(suffix)}</b><span>${esc(label)}</span></li>`;
   }).join('')}</ul>`;
 }
 
@@ -522,14 +530,16 @@ function observeReveals() {
 function countUp(el) {
   const target = Number(el.dataset.count);
   if (reduceMotion || !target) return;
+  const d = decimalsOf(el.dataset.count);
   const start = performance.now();
   const dur = 1400;
   const tick = (now) => {
     const k = Math.min(1, (now - start) / dur);
-    el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+    const v = target * (1 - Math.pow(1 - k, 3));
+    el.textContent = formatNum(k < 1 ? v : target, currentLang, d);
     if (k < 1) requestAnimationFrame(tick);
   };
-  el.textContent = '0';
+  el.textContent = formatNum(0, currentLang, d);
   requestAnimationFrame(tick);
 }
 
