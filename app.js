@@ -11,7 +11,7 @@ const CV = {
 const CONTACTS = {
   telegram: 'marstut',
   email: 'tarasenka.kiryl@gmail.com',
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/kiryl-tarasenka-825449175',
   github: 'kitarasenka',
 };
 
