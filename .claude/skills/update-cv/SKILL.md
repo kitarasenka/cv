@@ -52,6 +52,8 @@ Every folder in `nodes-managers/modules/` is a candidate for the BOTS block. A f
    ```
    Keep `.webp` files as they are. Each file should be at most ~250 KB.
 
+   **SEO copies of the numbers.** The years, commercial/lead counts, Pulsebit installs and BatBus users are also written out in the `<head>` of `index.html` (description, og/twitter tags, JSON-LD), in `UI.*['meta.description']` in `app.js` and on the share image `assets/og.jpg` (1200×630). The static hero text in `index.html` repeats `UI.en['hero.*']` for crawlers without JS. When any of these change, update all copies. Re-render `og.jpg` with headless Chrome (`--window-size=1200,630 --screenshot`) from a page styled like the site, and bump `<lastmod>` in `sitemap.xml`.
+
 6. **Check the result.** Serve the site with `python3 -m http.server 8765` (run in background). Dump the DOM through headless Chrome for `?lang=ru` and `?lang=en`:
    ```bash
    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu --virtual-time-budget=3000 --dump-dom "http://localhost:8765/?lang=en"

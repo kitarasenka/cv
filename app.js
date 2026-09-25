@@ -60,6 +60,8 @@ const UI = {
     'contact.copy': 'Скопировать',
     'contact.copied': 'Email скопирован',
     'footer.text': 'Кирилл Тарасенко · Батуми',
+    'meta.title': 'Кирилл Тарасенко — Senior React Native Engineer',
+    'meta.description': 'Кирилл Тарасенко — Senior React Native Engineer, 9+ лет. Тимлид Pulsebit (1M+ установок), Mustread и CleverMe; 15 коммерческих iOS- и Android-приложений.',
   },
   en: {
     'nav.apps': 'Apps',
@@ -105,6 +107,8 @@ const UI = {
     'contact.copy': 'Copy',
     'contact.copied': 'Email copied',
     'footer.text': 'Kiryl Tarasenka · Batumi',
+    'meta.title': 'Kiryl Tarasenka — Senior React Native Engineer',
+    'meta.description': 'Kiryl Tarasenka — Senior React Native Engineer, 9+ years. Team lead on Pulsebit (1M+ installs), Mustread and CleverMe; 15 commercial iOS and Android apps.',
   },
 };
 
@@ -935,9 +939,26 @@ function detectLang() {
 
 let currentLang = 'en';
 
+const SITE_URL = 'https://kitarasenka.github.io/cv/';
+
+// Заголовок, description и canonical под язык: поисковик рендерит ?lang=ru отдельной страницей.
+function setMeta(lang) {
+  const t = UI[lang];
+  document.title = t['meta.title'];
+  $('meta[name="description"]').content = t['meta.description'];
+  let canonical = $('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.append(canonical);
+  }
+  canonical.href = lang === 'en' ? SITE_URL : `${SITE_URL}?lang=${lang}`;
+}
+
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
+  setMeta(lang);
   $$('[data-i18n]').forEach((el) => { el.textContent = UI[lang][el.dataset.i18n]; });
   $$('.lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   $('.lang').dataset.active = lang;
@@ -1051,7 +1072,13 @@ function initCopy() {
   });
 }
 
-$$('.lang button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+$$('.lang button').forEach((b) => b.addEventListener('click', () => {
+  setLang(b.dataset.lang);
+  // Ссылка из адресной строки открывается на том же языке.
+  const url = new URL(location.href);
+  if (b.dataset.lang === 'en') url.searchParams.delete('lang'); else url.searchParams.set('lang', b.dataset.lang);
+  history.replaceState(null, '', url);
+}));
 
 setLang(detectLang());
 initSpotlight();
