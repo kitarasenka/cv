@@ -56,10 +56,12 @@ Every folder in `nodes-managers/modules/` is a candidate for the BOTS block. A f
    ```
    Every card must render and there must be no JS errors. For a visual check, take a screenshot with `--window-size=1280,3300 --force-prefers-reduced-motion --screenshot=<scratchpad>/shot.png`. Shrink it with `sips -Z 1000` to JPEG before viewing, because Read does not open large PNGs. Headless Chrome will not make a window narrower than ~500px. To check mobile, open the page in a 390px `<iframe>` on a temporary page and delete that page afterwards. Stop the server at the end.
 
-6. **New CV (only if the user sent one).** The source is an internal EPAM `.docx`, which must never be committed (`*.docx` is in `.gitignore`). Before publishing, read it in full with `textutil -convert txt -stdout`. Clean it by editing the XML inside the docx:
-   - remove the EPAM logo and address table and the "Confidential" footer (replace the footer with `kitarasenka.github.io/cv`);
-   - change `Client: <real client>` to `NDA` and replace internal code names (like Hermes and BeCSe) with neutral wording;
+6. **New CV (only if the user sent one).** The source `.docx` must never be committed (`*.docx` is in `.gitignore`). Before publishing, read it in full with `textutil -convert txt -stdout`. Clean it by editing the XML inside the docx:
+   - remove the employer's letterhead and any confidentiality footer (replace the footer with `kitarasenka.github.io/cv`);
+   - change client names to `NDA` and replace internal project code names with neutral wording;
    - spell the name as Kiryl Tarasenka.
+
+   The exact list of what to remove is in Claude's private memory. **Do not write the removed names into any file in this repo**, because the repo is public.
 
    Convert to PDF through Microsoft Word (AppleScript `save as ... file format format PDF`, working in `~/Library/Containers/com.microsoft.Word/Data/Documents`). Save the result to `cv/Kiryl_Tarasenka_CV_EN.pdf`.
 
