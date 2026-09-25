@@ -165,12 +165,16 @@ const PRODUCTS = [
     emoji: '🚌',
     name: 'BatBus',
     image: 'assets/img/batbus.jpg',
+    imagePosition: 'center',
     icon: 'assets/img/batbus-icon.png',
     tags: ['Telegram Mini App', 'Maps', 'Subscriptions'],
     stats: [
-      // MAU/WAU — из админки BatBus (экран «Пользователи»), на 25.09.2026. null — не показывается.
+      // Пользователи, MAU/WAU и сессии — из админки BatBus (экран «Пользователи»), на 25.09.2026.
+      // null — метрика не показывается.
+      { value: 17186, label: { ru: 'пользователей всего', en: 'users all time' } },
       { value: 7585, label: { ru: 'пользователей в месяц (MAU)', en: 'monthly users (MAU)' } },
       { value: 2329, label: { ru: 'пользователей в неделю (WAU)', en: 'weekly users (WAU)' } },
+      { value: 30037, label: { ru: 'сессий за 30 дней', en: 'sessions in 30 days' } },
       { value: 9, label: { ru: 'языков', en: 'languages' } },
       { value: 1.1, suffix: { ru: '\u00a0с', en: 's' }, label: { ru: 'средний запуск', en: 'avg launch time' } },
     ],
@@ -402,7 +406,7 @@ function renderStrengths(lang) {
 function renderProducts(lang) {
   $('#products-list').innerHTML = PRODUCTS.map((p) => `
     <article class="product spot reveal">
-      <div class="product__media">
+      <div class="product__media"${p.imagePosition ? ` style="--pos:${p.imagePosition}"` : ''}>
         <img src="${p.image}" alt="${esc(pick(p.name, lang))}" loading="lazy">
       </div>
       <div class="product__body">
