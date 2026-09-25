@@ -1,22 +1,25 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kiryl Tarasenka — Projects</title>
-  <meta name="description" content="Продукты, Telegram-боты и инфраструктура Кирилла Тарасенко. Products, Telegram bots and infrastructure by Kiryl Tarasenka.">
+  <title>Kiryl Tarasenka — Senior React Native Engineer</title>
+  <meta name="description" content="Kiryl Tarasenka — Senior React Native Engineer with 9+ years of experience: iOS, Android, Web and Telegram. Team lead, brownfield migrations, own products.">
   <meta name="theme-color" content="#0b0d12">
-  <meta property="og:title" content="Kiryl Tarasenka — Projects">
-  <meta property="og:description" content="BatBus, Twig, Ghost Garden, Telegram bots and Nodex.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/img/batbus.jpg">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗂</text></svg>">
+  <meta property="og:title" content="Kiryl Tarasenka — Senior React Native Engineer">
+  <meta property="og:description" content="9+ years building cross-platform apps. Team lead, brownfield migrations, own products: BatBus, Twig, Ghost Garden and Telegram bots.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://kitarasenka.github.io/cv/">
+  <meta property="og:image" content="https://kitarasenka.github.io/cv/assets/photo.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230b0d12'/><text x='50' y='67' font-family='Arial Black,Arial' font-weight='900' font-size='46' text-anchor='middle' fill='%23b6f36a'>KT</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
   <div class="bg" aria-hidden="true">
     <span class="bg__blob bg__blob--a"></span>
     <span class="bg__blob bg__blob--b"></span>
@@ -26,15 +29,15 @@
   <header class="topbar">
     <a class="topbar__brand" href="#top">KT<span>.</span></a>
     <nav class="topbar__nav">
-      <a href="#products" data-i18n="nav.products"></a>
-      <a href="#bots" data-i18n="nav.bots"></a>
-      <a href="#infra" data-i18n="nav.infra"></a>
+      <a href="#skills" data-i18n="nav.skills"></a>
+      <a href="#projects" data-i18n="nav.projects"></a>
     </nav>
     <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="ru">RU</button>
       <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
       <span class="lang__pill" aria-hidden="true"></span>
     </div>
+    <a class="btn btn--small btn--ghost topbar__cta" href="#contact" data-i18n="nav.contact"></a>
   </header>
 
   <main id="top">
@@ -46,53 +49,72 @@
           <span class="photo__initials">KT</span>
         </div>
         <div class="photo__orbit" aria-hidden="true">
-          <span>🚌</span><span>🌱</span><span>🌳</span><span>🤖</span><span>⚙️</span>
+          <span>📱</span><span>⚛️</span><span>🚌</span><span>🤖</span><span>🌳</span>
         </div>
       </div>
 
       <div class="hero__text">
-        <p class="hero__hello reveal" data-i18n="hero.hello"></p>
-        <h1 class="hero__name reveal" data-i18n="hero.name"></h1>
-        <p class="hero__role reveal" data-i18n="hero.role"></p>
+        <p class="hero__hello reveal"><span class="wave" aria-hidden="true">👋</span> <span data-i18n="hero.hello"></span></p>
+        <h1 class="hero__role reveal" data-i18n="hero.role"></h1>
+        <p class="hero__build reveal">
+          <span data-i18n="hero.build"></span>
+          <span class="rotator" id="rotator"></span>
+        </p>
         <p class="hero__about reveal" data-i18n="hero.about"></p>
         <div class="hero__actions reveal">
-          <a class="btn btn--primary" id="cv-link" href="#" download>
+          <a class="btn btn--primary magnetic" id="cv-link" href="#" download>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" /></svg>
             <span data-i18n="hero.cv"></span>
           </a>
-          <a class="btn btn--ghost" href="https://github.com/kitarasenka" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.3 5.8 2.6 5.8 2.6a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2v3.5" /></svg>
-            GitHub
+          <a class="btn btn--ghost magnetic" id="hero-write" href="#contact" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-3 16-6-5-3 3v-5l9-8-11 6-4-2z" /></svg>
+            <span data-i18n="hero.write"></span>
           </a>
         </div>
         <ul class="stats reveal" id="stats"></ul>
       </div>
     </section>
 
-    <section class="section" id="products">
-      <h2 class="section__title reveal"><span data-i18n="nav.products"></span></h2>
-      <div class="products" id="products-list"></div>
+    <div class="stack" id="stack" aria-label="Tech stack"></div>
+
+    <section class="section" id="skills">
+      <p class="eyebrow reveal"><span>01</span> <span data-i18n="skills.eyebrow"></span></p>
+      <h2 class="section__title reveal" data-i18n="skills.title"></h2>
+      <div class="strengths" id="strengths-list"></div>
     </section>
 
-    <section class="section" id="bots">
-      <h2 class="section__title reveal"><span data-i18n="nav.bots"></span></h2>
+    <section class="section" id="projects">
+      <p class="eyebrow reveal"><span>02</span> <span data-i18n="projects.eyebrow"></span></p>
+      <h2 class="section__title reveal" data-i18n="projects.title"></h2>
+      <p class="section__lead reveal" data-i18n="projects.lead"></p>
+      <div class="pet-stats reveal" id="pet-stats"></div>
+      <p class="pet-stats__note reveal" data-i18n="pets.note"></p>
+      <div class="products" id="products-list"></div>
+
+      <h3 class="subsection reveal" data-i18n="bots.title"></h3>
       <p class="section__lead reveal" data-i18n="bots.lead"></p>
       <div class="bots" id="bots-list"></div>
+
+      <h3 class="subsection reveal" data-i18n="infra.title"></h3>
+      <div id="infra-list"></div>
     </section>
 
-    <section class="section" id="infra">
-      <h2 class="section__title reveal"><span data-i18n="nav.infra"></span></h2>
-      <div id="infra-list"></div>
+    <section class="section contact" id="contact">
+      <div class="contact__card reveal">
+        <p class="eyebrow"><span>03</span> <span data-i18n="contact.eyebrow"></span></p>
+        <h2 class="contact__title" data-i18n="contact.title"></h2>
+        <p class="contact__lead" data-i18n="contact.lead"></p>
+        <div class="contact__actions" id="contact-actions"></div>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p data-i18n="footer.text"></p>
-    <a class="btn btn--primary btn--small" id="cv-link-footer" href="#" download>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16" /></svg>
-      <span data-i18n="hero.cv"></span>
-    </a>
+    <p>© 2026 · <span data-i18n="footer.text"></span></p>
+    <div class="footer__links" id="footer-links"></div>
   </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>
