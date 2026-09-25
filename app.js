@@ -1,8 +1,9 @@
 // Всё содержимое сайта — здесь. Чтобы поменять текст или добавить проект,
 // правь только этот блок: HTML и стили трогать не нужно.
 
+// CV пока только на английском — обе кнопки отдают его. Появится RU-версия — поменяй ru.
 const CV = {
-  ru: 'cv/Kiryl_Tarasenka_CV_RU.pdf',
+  ru: 'cv/Kiryl_Tarasenka_CV_EN.pdf',
   en: 'cv/Kiryl_Tarasenka_CV_EN.pdf',
 };
 
@@ -13,8 +14,8 @@ const UI = {
     'nav.infra': 'Инфраструктура',
     'hero.hello': 'Привет, я',
     'hero.name': 'Кирилл Тарасенко',
-    'hero.role': 'Full-stack разработчик · Telegram Mini Apps · боты',
-    'hero.about': 'Делаю продукты от идеи до продакшена: карты автобусов, десктопный Git-клиент, браузерную игру и десяток Telegram-ботов — всё крутится на моей собственной панели деплоя.',
+    'hero.role': 'Senior Software Engineer · React Native · 9+ лет',
+    'hero.about': 'Днём строю кроссплатформенные приложения на React Native. В остальное время делаю свои продукты от идеи до продакшена: карту автобусов, десктопный Git-клиент, браузерную игру и десяток Telegram-ботов — всё крутится на моей собственной панели деплоя.',
     'hero.cv': 'Скачать CV',
     'stats.products': 'продукта',
     'stats.bots': 'ботов',
@@ -29,8 +30,8 @@ const UI = {
     'nav.infra': 'Infrastructure',
     'hero.hello': "Hi, I'm",
     'hero.name': 'Kiryl Tarasenka',
-    'hero.role': 'Full-stack developer · Telegram Mini Apps · bots',
-    'hero.about': 'I build products from idea to production: a live bus map, a desktop Git client, a browser game and a dozen Telegram bots — all running on my own deployment panel.',
+    'hero.role': 'Senior Software Engineer · React Native · 9+ years',
+    'hero.about': 'By day I build cross-platform apps with React Native. The rest of the time I ship my own products from idea to production: a live bus map, a desktop Git client, a browser game and a dozen Telegram bots — all running on my own deployment panel.',
     'hero.cv': 'Download CV',
     'stats.products': 'products',
     'stats.bots': 'bots',
